@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import path from "path";
-
+import job from "./cron.js";
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
@@ -35,6 +35,8 @@ app.get("*", (req, res) =>{
 //     res.send("11221");
 // });
 
+
+job.start();
 
 server.listen(PORT, () => {
     connectToMongoDB();
